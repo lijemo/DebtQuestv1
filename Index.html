@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    body {
+        background-color: rgb(0, 0, 0);
+        font-size: 20px;
+        color: rgb(123, 255, 46);
+        margin: auto;
+        display: block;
+    }
+    #logo {
+      width: 60%;
+      margin: auto;
+      display: block;
+    }
+    #dice {
+      margin: auto;
+      display: none;
+      /* position: absolute;
+      bottom: 0;
+      right: 0; */
+    }
+    #weapon-div {
+      white-space: pre-line;
+      display: block;
+      margin: auto;
+      width: fit-content;
+    }
+    #weapon-button {
+      display: block;
+      margin: auto;
+      width: fit-content;
+    }
+</style>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="author" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<script>
+    // var BUTTON_PRESSED = false;
+    function selectWeapon() {
+        // if (BUTTON_PRESSED === true) {
+        //   return;
+        // }
+
+        // BUTTON_PRESSED = true;
+        // Define our list of tokens
+        const WEAPONS = ["sword", "knife", "gun", "dildo"];
+
+        // Select a token at random
+        const index = Math.floor(Math.random() * WEAPONS.length);
+        const randomWep = WEAPONS[index];
+
+        const diceElement = document.getElementById("dice");
+        dice.style.display = "block";
+
+        const buttonElement = document.getElementById("weapon-button");
+        buttonElement.style.display = "none";
+
+        // Play dice audio
+        var DICE_ROLL = new Audio();
+        DICE_ROLL.src = "DiceRoll.mp3";
+        setTimeout(() => {
+          DICE_ROLL.play();
+        }, 100);
+
+        // Grab a reference to the weapon-div element
+        const weaponElement = document.getElementById("weapon-div");
+
+        //Wait 2 seconds before updating weapon-div
+        weaponElement.innerHTML = ". . .";
+        setTimeout(() => {
+
+        // Set its text to be the random value we selected
+        weaponElement.innerHTML = `weapon: ${randomWep}\nweapon: ${randomWep}\n`;
+        }, 1500);
+    }
+</script>
+
+<body>
+    <img id="logo" src="DebtQuest_Logo_Pixelated.png"/>
+    <img id="dice" src="DiceStop.gif"/>
+    <button id="weapon-button" onclick="selectWeapon()">Click me</button>
+    <div id="weapon-div">Click button to choose random weapon</div>
+    <!-- <audio controls autoplay>
+        <source src="Castle.mp3">
+    </audio> -->
+</body>
+
+</html>
