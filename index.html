@@ -7,12 +7,36 @@
         background-color: rgb(0, 0, 0);
         font-size: 20px;
         font-family: 'Courier New', Courier, monospace;
-        color: rgb(123, 255, 46);
+        color: greenyellow;
         margin: auto;
         display: block;
     }
+    #doorStatic {
+      max-width: 800px;
+      position: fixed;
+      z-index: 2;
+      top: 0;
+      right: 0;
+      left: 0;
+      margin-left: auto;
+      margin-right: auto;
+      width: 60%;
+      display: block;
+    }
+    #door {
+      max-width: 800px;
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      margin-left: auto;
+      margin-right: auto;
+      width: 60%;
+      display: none;
+    }
     #logo {
       width: 60%;
+      max-width: 800px;
       margin: auto;
       display: block;
     }
@@ -32,7 +56,13 @@
     #weapon-button {
       display: block;
       margin: auto;
-      width: fit-content;
+      width: 90px;
+      height: 40px;
+      border-radius: 0px;
+      font-family: 'Courier New', Courier, monospace;
+      border: 1px solid greenyellow;
+      background-color: black;
+      color: greenyellow;
     }
 </style>
   <meta charset="utf-8">
@@ -74,20 +104,38 @@
         // Grab a reference to the weapon-div element
         const weaponElement = document.getElementById("weapon-div");
 
-        //Wait 2 seconds before updating weapon-div
-        weaponElement.innerHTML = ". . .";
+        //Wait 2 seconds before updating weapon-div and display loading text
+        weaponElement.innerHTML = " ";
         setTimeout(() => {
 
         // Set its text to be the random value we selected
         weaponElement.innerHTML = `weapon: ${randomWep}\nweapon: ${randomWep}\n`;
         }, 1500);
     }
+
+    function enterSite() {
+
+        const doorStaticElement = document.getElementById("doorStatic");
+        doorStaticElement.remove();
+
+        const doorElement = document.getElementById("door");
+        door.style.display = "block";
+        setTimeout(() => {
+          doorElement.remove();
+        }, 5000);
+
+        var BG_MUSIC = new Audio();
+        BG_MUSIC.src = "Castle.mp3";
+        BG_MUSIC.play();
+}
 </script>
 
 <body>
+    <img id="doorStatic" src="DoorStatic.gif" onclick="enterSite()" onmouseover="" style="cursor: pointer;"/>
+    <img id="door" src="Door.gif"/>
     <img id="logo" src="DebtQuest_Logo_Pixelated.png"/>
     <img id="dice" src="DiceStop.gif"/>
-    <button id="weapon-button" onclick="selectWeapon()">Click me</button>
+    <button id="weapon-button" onclick="selectWeapon()">BEGIN</button>
     <br>
     <div id="weapon-div">Click button to choose random weapon</div>
     <!-- <audio controls autoplay>
