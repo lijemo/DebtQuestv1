@@ -57,6 +57,16 @@
       text-align: center;
       width: 50%;
     }
+    #world {
+      display: none;
+      margin: auto;
+      max-width: 700px;
+      text-align: center;
+      width: 20%;
+      border: 2px solid greenyellow;
+      padding: 10px;
+      margin-top: 20px;
+    }
     #weapon-button {
       display: block;
       margin: auto;
@@ -87,10 +97,13 @@
         // BUTTON_PRESSED = true;
         // Define our list of tokens
         const WEAPONS = ["MURDER FOREST", "EERIE ISLES", "THE TOWER OF PAIN"];
-
+        const WORLD_IMAGES = ["MurderForest.png", "EerieIsles.png", "TowerOfPain.png"];
+        const WORLD_LINKS = ["https://drive.google.com/file/d/1seU59c4LVE63QGjPXucQVXKxokoLDYav/view?usp=sharing", "https://drive.google.com/file/d/17izmRIJGWu8An4a_yQUWr6T-mSH8JhQV/view?usp=sharing", "https://drive.google.com/file/d/1oZhv5TTusRlC8-nVsExn_x0yFRf36RHZ/view?usp=sharing"];
         // Select a token at random
         const index = Math.floor(Math.random() * WEAPONS.length);
         const randomWep = WEAPONS[index];
+        const randomWorld = WORLD_IMAGES[index];
+        const randomWorldPic = WORLD_LINKS[index];
 
         const diceElement = document.getElementById("dice");
         dice.style.display = "block";
@@ -108,14 +121,24 @@
         // Grab a reference to the list element
         const weaponElement = document.getElementById("list");
 
+        // Grab a reference to the world element
+        const worldElement = document.getElementById("world");
+
+        // Grab a reference to the world image element
+        const worldImageElement = document.getElementById("worldLink");
+
         //Wait 2 seconds before updating list and display loading text
         weaponElement.innerHTML = " ";
         setTimeout(() => {
 
-        // Set its text to be the random value we selected
-        // weaponElement.innerHTML = `location: ${randomWep}\nweapon: ${randomWep}\n`;
-        weaponElement.innerHTML = `location: ${randomWep}`;
+          // Set its text to be the random value we selected
+          // weaponElement.innerHTML = `location: ${randomWep}\nweapon: ${randomWep}\n`;
+          weaponElement.innerHTML = `location: ${randomWep}`;
+          worldElement.src = randomWorld;
+          worldElement.style.display = "block";
+          worldImageElement.href = randomWorldPic;
         }, 1500);
+
     }
 
     function enterSite() {
@@ -148,6 +171,9 @@
     <button id="weapon-button" onclick="selectWeapon()" onmouseover="" style="cursor: pointer;">ROLL</button>
     <br>
     <div id="list">Roll for a location</div>
+    <a id="worldLink" href = "" target = "_blank">
+      <img id="world" src = ""/>
+    </a>
     <!-- <audio controls autoplay>
         <source src="Castle.mp3">
     </audio> -->
