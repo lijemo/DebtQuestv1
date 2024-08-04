@@ -47,7 +47,7 @@
       bottom: 0;
       right: 0; */
     }
-    #weapon-div {
+    #list {
       white-space: pre-line;
       display: block;
       margin: auto;
@@ -103,10 +103,10 @@
           DICE_ROLL.play();
         }, 100);
 
-        // Grab a reference to the weapon-div element
-        const weaponElement = document.getElementById("weapon-div");
+        // Grab a reference to the list element
+        const weaponElement = document.getElementById("list");
 
-        //Wait 2 seconds before updating weapon-div and display loading text
+        //Wait 2 seconds before updating list and display loading text
         weaponElement.innerHTML = " ";
         setTimeout(() => {
 
@@ -122,9 +122,14 @@
 
         const doorElement = document.getElementById("door");
         door.style.display = "block";
+
+        const listElement = document.getElementById("list");
+        list.style.display = "none";
+        
         setTimeout(() => {
           doorElement.remove();
-        }, 5000);
+          list.style.display = "block";
+        }, 5200);
 
         var BG_MUSIC = new Audio();
         BG_MUSIC.src = "Castle.mp3";
@@ -139,7 +144,7 @@
     <img id="dice" src="DiceStop.gif"/>
     <button id="weapon-button" onclick="selectWeapon()" onmouseover="" style="cursor: pointer;">BEGIN</button>
     <br>
-    <div id="weapon-div">Click button to choose random weapon</div>
+    <div id="list">Click button to choose random weapon</div>
     <!-- <audio controls autoplay>
         <source src="Castle.mp3">
     </audio> -->
