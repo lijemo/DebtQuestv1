@@ -86,7 +86,7 @@
 
         // BUTTON_PRESSED = true;
         // Define our list of tokens
-        const WEAPONS = ["sword", "knife", "gun", "dildo"];
+        const WEAPONS = ["MURDER FOREST", "EERIE ISLES", "THE TOWER OF PAIN"];
 
         // Select a token at random
         const index = Math.floor(Math.random() * WEAPONS.length);
@@ -113,7 +113,8 @@
         setTimeout(() => {
 
         // Set its text to be the random value we selected
-        weaponElement.innerHTML = `weapon: ${randomWep}\nweapon: ${randomWep}\n`;
+        // weaponElement.innerHTML = `location: ${randomWep}\nweapon: ${randomWep}\n`;
+        weaponElement.innerHTML = `location: ${randomWep}`;
         }, 1500);
     }
 
@@ -144,9 +145,9 @@
     <img id="door" src="Door.gif"/>
     <img id="logo" src="DebtQuest_Logo_Pixelated.png"/>
     <img id="dice" src="DiceStop.gif"/>
-    <button id="weapon-button" onclick="selectWeapon()" onmouseover="" style="cursor: pointer;">BEGIN</button>
+    <button id="weapon-button" onclick="selectWeapon()" onmouseover="" style="cursor: pointer;">ROLL</button>
     <br>
-    <div id="list">Click button to choose random weapon</div>
+    <div id="list">Roll for a location</div>
     <!-- <audio controls autoplay>
         <source src="Castle.mp3">
     </audio> -->
