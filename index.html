@@ -8,7 +8,7 @@
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: 100% 100%;
-        /* background-color: rgb(0, 0, 0);  */
+        background-color: rgb(0, 0, 0); 
         font-size: 16px;
         font-family: 'Courier New', Courier, monospace;
         color: greenyellow;
@@ -84,7 +84,19 @@
       border: 2px solid greenyellow;
       border-style: dashed;
       padding: 15px;
-
+    }
+    #secondList {
+      white-space: pre-line;
+      display: none;
+      margin: auto;
+      /* width: fit-content; */
+      text-align: center;
+      width: 200px;
+      margin-bottom: 20px;
+      border: 2px solid greenyellow;
+      border-style: dashed;
+      padding: 15px;
+      margin-top: 30px;
     }
     #world {
       display: none;
@@ -100,6 +112,17 @@
     }
     #weapon-button {
       display: block;
+      margin: auto;
+      width: 90px;
+      height: 40px;
+      border-radius: 0px;
+      font-family: 'Courier New', Courier, monospace;
+      border: 1px solid greenyellow;
+      background-color: black;
+      color: greenyellow;
+    }
+    #secondButton {
+      display: none;
       margin: auto;
       width: 90px;
       height: 40px;
@@ -189,8 +212,14 @@
         // Grab a reference to the links container element
         const linksContainerElement = document.getElementById("links");
 
+        // Grab a reference to the second list element
+        const secondListElement = document.getElementById("secondList");
+
+        // Grab a reference to the second button element
+        const secondButtonElement = document.getElementById("secondButton");
+
         //Wait 2 seconds before updating list and display loading text
-        weaponElement.innerHTML = ". . .";
+        weaponElement.innerHTML = "•  •  •";
         setTimeout(() => {
 
           // Set its text to be the random value we selected
@@ -201,7 +230,9 @@
           worldElement.style.display = "block";
           worldImageElement.href = randomWorldPic;
           diceElement.style.display = "none";
-          linksContainerElement.style.display = "block";
+          // linksContainerElement.style.display = "block";
+          secondListElement.style.display = "block";
+          secondButtonElement.style.display = "block";
           // linksContainerElement.style.display = "none";
         }, 1500);
 
@@ -261,6 +292,8 @@
     <a id="worldLink" href = "" target = "_blank">
       <img id="world" src = ""/>
     </a>
+    <div id="secondList">ROLL AGAIN FOR SUGGESTED PROMPT</div>
+    <button id="secondButton" onclick="selectPrompt()" onmouseover="" style="cursor: pointer;">ROLL</button>
     <div id="links" class="links-container">
     <a href="https://hellavisiontelevision.com/DQ-Characters" class="button" style="text-decoration:none" target = "_blank">MAIN CHARACTERS</a>
     <a href="https://hellavisiontelevision.com/DQ-bestiary" class="button" style="text-decoration:none" target = "_blank">BESTIARY</a>
