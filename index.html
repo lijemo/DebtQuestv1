@@ -4,12 +4,17 @@
 <head>
   <style>
     body {
-        background-color: rgb(0, 0, 0);
-        font-size: 20px;
+        background-image: url("BG.jpg") !important;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+        /* background-color: rgb(0, 0, 0);  */
+        font-size: 16px;
         font-family: 'Courier New', Courier, monospace;
         color: greenyellow;
         margin: auto;
         display: block;
+        margin-top: -20px;
     }
     a.button {
       display: inline;
@@ -62,7 +67,7 @@
     #dice {
       margin: auto;
       display: none;
-      max-width: 150px;
+      max-width: 200px;
       width: 30%;
       /* position: absolute;
       bottom: 0;
@@ -74,8 +79,11 @@
       margin: auto;
       /* width: fit-content; */
       text-align: center;
-      width: 50%;
+      width: 200px;
       margin-bottom: 20px;
+      border: 2px solid greenyellow;
+      border-style: dashed;
+      padding: 15px;
 
     }
     #world {
@@ -86,7 +94,7 @@
       width: 75%;
       border: 2px solid greenyellow;
       padding: 10px;
-      margin-top: 20px;
+      margin-top: -10px;
       margin-bottom: 20px;
 
     }
@@ -105,6 +113,30 @@
       text-align: center;
       display: none;
     }
+    #muteButton {
+      display: block;
+      position: fixed;
+      bottom: 0px;
+      right: 0px;
+      width: 50px;
+      height: 50px;
+      padding: 20px;
+    }
+    #unmuteButton {
+      display: none;
+      position: fixed;
+      bottom: 0px;
+      right: 0px;
+      width: 50px;
+      height: 50px;
+      padding: 20px;
+    }
+    @media print {
+* {
+    -webkit-print-color-adjust: exact !important; /*Chrome, Safari */
+    color-adjust: exact !important;  /*Firefox*/
+  }
+}
 </style>
   <meta charset="utf-8">
   <title></title>
@@ -158,12 +190,13 @@
         const linksContainerElement = document.getElementById("links");
 
         //Wait 2 seconds before updating list and display loading text
-        weaponElement.innerHTML = " ";
+        weaponElement.innerHTML = ". . .";
         setTimeout(() => {
 
           // Set its text to be the random value we selected
           // weaponElement.innerHTML = `location: ${randomWep}\nweapon: ${randomWep}\n`;
-          weaponElement.innerHTML = `location: ${randomWep}`;
+          // weaponElement.innerHTML = `location: ${randomWep}`;
+          weaponElement.innerHTML = `${randomWep}`;
           worldElement.src = randomWorld;
           worldElement.style.display = "block";
           worldImageElement.href = randomWorldPic;
@@ -183,27 +216,48 @@
         door.style.display = "block";
 
         const listElement = document.getElementById("list");
-        list.style.display = "none";
+        list.style.display = "block";
         
         setTimeout(() => {
           doorElement.remove();
           list.style.display = "block";
         }, 5200);
 
-        var BG_MUSIC = new Audio();
-        BG_MUSIC.src = "Castle.mp3";
-        BG_MUSIC.play();
+        const bgMusicElement = document.getElementById("music");
+        bgMusicElement.play();
 }
+
+    function mute() {
+      const bgMusicElement = document.getElementById("music");
+      bgMusicElement.muted = true;
+
+      const muteButtonElement = document.getElementById("muteButton");
+      muteButtonElement.style.display = "none";
+
+      const unmuteButtonElement = document.getElementById("unmuteButton");
+      unmuteButtonElement.style.display = "block";
+    }
+
+    function unmute() {
+      const bgMusicElement = document.getElementById("music");
+      bgMusicElement.muted = false;
+
+      const muteButtonElement = document.getElementById("muteButton");
+      muteButtonElement.style.display = "block";
+
+      const unmuteButtonElement = document.getElementById("unmuteButton");
+      unmuteButtonElement.style.display = "none";
+    }
 </script>
 
 <body>
     <img id="doorStatic" src="DoorStatic.gif" onclick="enterSite()" onmouseover="" style="cursor: pointer;"/>
     <img id="door" src="Door.gif"/>
     <img id="logo" src="DebtQuest_Logo_Pixelated.png"/>
-    <img id="dice" src="DiceStop.gif"/>
-    <button id="weapon-button" onclick="selectWeapon()" onmouseover="" style="cursor: pointer;">ROLL</button>
-    <br>
     <div id="list">ROLL FOR A LOCATION</div>
+    <img id="dice" src="DiceStop.gif"/>
+    <br>
+    <button id="weapon-button" onclick="selectWeapon()" onmouseover="" style="cursor: pointer;">ROLL</button>
     <a id="worldLink" href = "" target = "_blank">
       <img id="world" src = ""/>
     </a>
@@ -214,10 +268,15 @@
     <a href="https://hellavisiontelevision.com/DQ-NPCs" class="button" style="text-decoration:none" target = "_blank">NPC COMMONS</a>
     <br/>
     <a href="https://hellavisiontelevision.com/DQ-Worlds" class="button" style="text-decoration:none" target = "_blank">WORLD GALLERY</a>
-    <a href="" class="button" style="text-decoration:none" target = "_blank">V.O. BANK</a>
+    <a href="" class="button" style="text-decoration:none" target = "_blank">V.O. BANK</a>
     <a href="https://hellavisiontelevision.com/Debtquest" class="button" style="text-decoration:none" target = "_blank">GUIDELINES</a>
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSevzBgqM281VUn2G8KNnb0xdmwQPgks8wYTw8UYBrrzW37WWw/viewform" class="button" style="text-decoration:none" target = "_blank">SUBMIT</a>
+    <br/>
+    <a onclick="window.print()" onmouseover="" style="cursor: pointer;" class="button" style="text-decoration:none" target = "_blank">PRINT SCREEN</a>
   </div>
+    <img id="muteButton" src="MuteButton.png" onclick="mute()" onmouseover="" style="cursor: pointer;"/>
+    <img id="unmuteButton" src="UnmuteButton.png" onclick="unmute()" onmouseover="" style="cursor: pointer;"/>
+    <audio id="music" src="Castle.mp3";>
     <!-- <audio controls autoplay>
         <source src="Castle.mp3">
     </audio> -->
