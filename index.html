@@ -35,6 +35,11 @@
       margin-bottom: 25px;
       line-height: 60px;
 }
+    #instructions {
+        margin: auto;
+        display: block;
+        margin-top: -20px;
+    }
     #doorStatic {
       max-width: 800px;
       position: fixed;
@@ -172,6 +177,19 @@
     .links-container {
       text-align: center;
       display: none;
+    }
+    #explore {
+    display: none;
+    margin: auto;
+    width: 75%;
+    border-radius: 0px;
+    font-family: 'Courier New', Courier, monospace;
+    /* border: 1px solid greenyellow; */
+    /* background-color: black; */
+    color: greenyellow;
+    font-size: 15px;
+    text-align: center;
+    padding: 10px;
     }
     #muteButton {
       display: block;
@@ -354,6 +372,9 @@
         const thirdListElement = document.getElementById("thirdList");
         thirdListElement.style.display = "none";
 
+        const exploreElement = document.getElementById("explore");
+        exploreElement.style.display = "block";
+
         // Grab a reference to the links container element
         const linksContainerElement = document.getElementById("links");
 
@@ -385,6 +406,7 @@
     <img id="secondDice" src="Dice.gif"/>
     <img id="promptImage" src = ""/>
     <div id="thirdList">MONKEY</div>
+    <h2><a id="explore">EXPLORE THE LINKS BELOW TO DIVE INTO THE WORLD OF DEBT QUEST!</a></h2>
     <div id="links" class="links-container">
     <a href="https://hellavisiontelevision.com/DQ-Characters" class="button" style="text-decoration:none" target = "_blank">MAIN CHARACTERS</a>
     <a href="https://hellavisiontelevision.com/DQ-bestiary" class="button" style="text-decoration:none" target = "_blank">BESTIARY</a>
