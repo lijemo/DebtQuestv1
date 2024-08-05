@@ -11,6 +11,25 @@
         margin: auto;
         display: block;
     }
+    a.button {
+      display: inline;
+      margin-left: auto;
+      margin-right: auto;
+      width: 90px;
+      height: 40px;
+      border-radius: 0px;
+      font-family: 'Courier New', Courier, monospace;
+      border: 1px solid greenyellow;
+      background-color: black;
+      color: greenyellow;
+      text-align: center;
+      font-size: 14px;
+      align-content: center;
+      padding: 12px;
+      margin-top: 25px;
+      margin-bottom: 25px;
+      line-height: 60px;
+}
     #doorStatic {
       max-width: 800px;
       position: fixed;
@@ -44,7 +63,7 @@
       margin: auto;
       display: none;
       max-width: 150px;
-      width: 20%;
+      width: 30%;
       /* position: absolute;
       bottom: 0;
       right: 0; */
@@ -56,6 +75,8 @@
       /* width: fit-content; */
       text-align: center;
       width: 50%;
+      margin-bottom: 20px;
+
     }
     #world {
       display: none;
@@ -65,7 +86,9 @@
       width: 75%;
       border: 2px solid greenyellow;
       padding: 10px;
-      margin-top: 25px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+
     }
     #weapon-button {
       display: block;
@@ -77,6 +100,10 @@
       border: 1px solid greenyellow;
       background-color: black;
       color: greenyellow;
+    }
+    .links-container {
+      text-align: center;
+      display: none;
     }
 </style>
   <meta charset="utf-8">
@@ -127,6 +154,9 @@
         // Grab a reference to the world image element
         const worldImageElement = document.getElementById("worldLink");
 
+        // Grab a reference to the links container element
+        const linksContainerElement = document.getElementById("links");
+
         //Wait 2 seconds before updating list and display loading text
         weaponElement.innerHTML = " ";
         setTimeout(() => {
@@ -137,6 +167,9 @@
           worldElement.src = randomWorld;
           worldElement.style.display = "block";
           worldImageElement.href = randomWorldPic;
+          diceElement.style.display = "none";
+          linksContainerElement.style.display = "block";
+          // linksContainerElement.style.display = "none";
         }, 1500);
 
     }
@@ -170,10 +203,21 @@
     <img id="dice" src="DiceStop.gif"/>
     <button id="weapon-button" onclick="selectWeapon()" onmouseover="" style="cursor: pointer;">ROLL</button>
     <br>
-    <div id="list">Roll for a location</div>
+    <div id="list">ROLL FOR A LOCATION</div>
     <a id="worldLink" href = "" target = "_blank">
       <img id="world" src = ""/>
     </a>
+    <div id="links" class="links-container">
+    <a href="https://hellavisiontelevision.com/DQ-Characters" class="button" style="text-decoration:none" target = "_blank">MAIN CHARACTERS</a>
+    <a href="https://hellavisiontelevision.com/DQ-bestiary" class="button" style="text-decoration:none" target = "_blank">BESTIARY</a>
+    <a href="https://hellavisiontelevision.com/DQ-Weapons" class="button" style="text-decoration:none" target = "_blank">WEAPONS CACHE</a>
+    <a href="https://hellavisiontelevision.com/DQ-NPCs" class="button" style="text-decoration:none" target = "_blank">NPC COMMONS</a>
+    <br/>
+    <a href="https://hellavisiontelevision.com/DQ-Worlds" class="button" style="text-decoration:none" target = "_blank">WORLD GALLERY</a>
+    <a href="" class="button" style="text-decoration:none" target = "_blank">V.O. BANK</a>
+    <a href="https://hellavisiontelevision.com/Debtquest" class="button" style="text-decoration:none" target = "_blank">GUIDELINES</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSevzBgqM281VUn2G8KNnb0xdmwQPgks8wYTw8UYBrrzW37WWw/viewform" class="button" style="text-decoration:none" target = "_blank">SUBMIT</a>
+  </div>
     <!-- <audio controls autoplay>
         <source src="Castle.mp3">
     </audio> -->
