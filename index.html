@@ -227,15 +227,15 @@
   <link href="css/style.css" rel="stylesheet">
 </head>
 <script>
+        const bgMusicElement = document.getElementById("music");
+        
+        document.addEventListener("visibilitychange", function() {
+        if (document["hidden"]) {
+          music.pause();
+          } else {
+            music.play();}
+        });
 
-  document.addEventListener("visibilitychange");
-  function handleVisibilityChange() {
-  if (document.hidden) {
-    stopAll();
-  } 
-}
-
-document.addEventListener("visibilitychange", handleVisibilityChange, false);
     // var BUTTON_PRESSED = false;
     function selectWeapon() {
         // if (BUTTON_PRESSED === true) {
