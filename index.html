@@ -110,7 +110,7 @@
     #world {
       display: none;
       margin: auto;
-      max-width: 700px;
+      max-width: 600px;
       text-align: center;
       width: 75%;
       border: 2px solid greenyellow;
@@ -218,9 +218,6 @@
         // Grab a reference to the world image element
         const worldImageElement = document.getElementById("worldLink");
 
-        // Grab a reference to the links container element
-        const linksContainerElement = document.getElementById("links");
-
         // Grab a reference to the second list element
         const secondListElement = document.getElementById("secondList");
 
@@ -301,14 +298,21 @@
           DICE_ROLL.play();
         }, 100);
 
+        const secondListElement = document.getElementById("secondList");
+        secondListElement.innerHTML = "•  •  •";
+
         const secondButtonElement = document.getElementById("secondButton");
         secondButtonElement.style.display = "none";
 
         const secondDiceElement = document.getElementById("secondDice");
         secondDiceElement.style.display = "block";
 
+        // Grab a reference to the links container element
+        const linksContainerElement = document.getElementById("links");
+
         setTimeout(() => {
         secondDiceElement.style.display = "none";
+        linksContainerElement.style.display = "block";
         }, 1500);
     }
 </script>
